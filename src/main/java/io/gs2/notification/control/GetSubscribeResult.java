@@ -1,5 +1,7 @@
 package io.gs2.notification.control;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import io.gs2.notification.model.Subscribe;
 
 /**
@@ -8,6 +10,7 @@ import io.gs2.notification.model.Subscribe;
  * @author Game Server Services, Inc.
  *
  */
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class GetSubscribeResult {
 
 	/** 通知先 */
