@@ -1,67 +1,73 @@
+/*
+ * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package io.gs2.notification.control;
 
+import org.json.JSONObject;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import io.gs2.notification.model.Subscribe;
+import io.gs2.notification.model.*;
 
 /**
- * 通知先一覧取得結果。
- * 
  * @author Game Server Services, Inc.
- *
  */
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class DescribeSubscribeResult {
 
-	/** 通知先一覧 */
-	List<Subscribe> items;
-	/** 次のページを取得するためのトークン */
-	String nextPageToken;
-	
+	/** 次のページを読み込むためのトークン */
+	private String nextPageToken;
+
+	/** 購読 */
+	private List<Subscribe> items;
+
+
 	/**
-	 * 取得した通知先数を取得。
-	 * 
-	 * @return 取得した通知先数
-	 */
-	public Integer getCount() {
-		return items == null ? null : items.size();
-	}
-	
-	@Deprecated
-	public void setCount(Integer count){ }
-	
-	/**
-	 * 取得した通知先一覧を取得。
-	 * 
-	 * @return 通知先一覧
-	 */
-	public List<Subscribe> getItems() {
-		return items;
-	}
-	
-	/**
-	 * 通知先一覧を設定。
-	 * 
-	 * @param items 通知先一覧
-	 */
-	public void setItems(List<Subscribe> items) {
-		this.items = items;
-	}
-	
-	/**
-	 * 次のページを取得するためのトークンを取得。
-	 * 
-	 * {@link DescribeSubscribeRequest} に指定することで、次のページを取得できます。
-	 * 
-	 * @return トークン
+	 * 次のページを読み込むためのトークンを取得
+	 *
+	 * @return 次のページを読み込むためのトークン
 	 */
 	public String getNextPageToken() {
 		return nextPageToken;
 	}
-	
+
+	/**
+	 * 次のページを読み込むためのトークンを設定
+	 *
+	 * @param nextPageToken 次のページを読み込むためのトークン
+	 */
 	public void setNextPageToken(String nextPageToken) {
 		this.nextPageToken = nextPageToken;
 	}
+
+	/**
+	 * 購読を取得
+	 *
+	 * @return 購読
+	 */
+	public List<Subscribe> getItems() {
+		return items;
+	}
+
+	/**
+	 * 購読を設定
+	 *
+	 * @param items 購読
+	 */
+	public void setItems(List<Subscribe> items) {
+		this.items = items;
+	}
+
 }
