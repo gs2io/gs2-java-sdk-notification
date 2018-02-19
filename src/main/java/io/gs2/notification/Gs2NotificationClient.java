@@ -61,7 +61,9 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public CreateNotificationResult createNotification(CreateNotificationRequest request) {
@@ -77,6 +79,9 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 				CreateNotificationRequest.Constant.MODULE,
 				CreateNotificationRequest.Constant.FUNCTION,
 				body.toString());
+        if(request.getRequestId() != null) {
+            post.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(post, CreateNotificationResult.class);
@@ -89,22 +94,27 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public CreateSubscribeResult createSubscribe(CreateSubscribeRequest request) {
 
 		ObjectNode body = JsonNodeFactory.instance.objectNode()
-				.put("endpoint", request.getEndpoint())
-				.put("type", request.getType());
+				.put("type", request.getType())
+				.put("endpoint", request.getEndpoint());
 
 		HttpPost post = createHttpPost(
-				Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null ? "null" : request.getNotificationName()) + "/subscribe",
+				Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null || request.getNotificationName().equals("") ? "null" : request.getNotificationName()) + "/subscribe",
 				credential,
 				ENDPOINT,
 				CreateSubscribeRequest.Constant.MODULE,
 				CreateSubscribeRequest.Constant.FUNCTION,
 				body.toString());
+        if(request.getRequestId() != null) {
+            post.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(post, CreateSubscribeResult.class);
@@ -117,11 +127,12 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 */
 
 	public void deleteNotification(DeleteNotificationRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null ? "null" : request.getNotificationName()) + "";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null || request.getNotificationName().equals("") ? "null" : request.getNotificationName()) + "";
 
 
 
@@ -131,6 +142,9 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 				ENDPOINT,
 				DeleteNotificationRequest.Constant.MODULE,
 				DeleteNotificationRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            delete.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		doRequest(delete, null);
@@ -143,11 +157,12 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 */
 
 	public void deleteSubscribe(DeleteSubscribeRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null ? "null" : request.getNotificationName()) + "/subscribe/" + (request.getSubscribeId() == null ? "null" : request.getSubscribeId()) + "";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null || request.getNotificationName().equals("") ? "null" : request.getNotificationName()) + "/subscribe/" + (request.getSubscribeId() == null || request.getSubscribeId().equals("") ? "null" : request.getSubscribeId()) + "";
 
 
 
@@ -157,6 +172,9 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 				ENDPOINT,
 				DeleteSubscribeRequest.Constant.MODULE,
 				DeleteSubscribeRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            delete.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		doRequest(delete, null);
@@ -169,7 +187,9 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public DescribeNotificationResult describeNotification(DescribeNotificationRequest request) {
@@ -190,6 +210,9 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 				ENDPOINT,
 				DescribeNotificationRequest.Constant.MODULE,
 				DescribeNotificationRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, DescribeNotificationResult.class);
@@ -202,12 +225,14 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public DescribeSubscribeResult describeSubscribe(DescribeSubscribeRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null ? "null" : request.getNotificationName()) + "/subscribe";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null || request.getNotificationName().equals("") ? "null" : request.getNotificationName()) + "/subscribe";
 
         List<NameValuePair> queryString = new ArrayList<>();
         if(request.getPageToken() != null) queryString.add(new BasicNameValuePair("pageToken", String.valueOf(request.getPageToken())));
@@ -223,6 +248,9 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 				ENDPOINT,
 				DescribeSubscribeRequest.Constant.MODULE,
 				DescribeSubscribeRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, DescribeSubscribeResult.class);
@@ -235,12 +263,14 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public GetNotificationResult getNotification(GetNotificationRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null ? "null" : request.getNotificationName()) + "";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null || request.getNotificationName().equals("") ? "null" : request.getNotificationName()) + "";
 
 
 
@@ -250,6 +280,9 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 				ENDPOINT,
 				GetNotificationRequest.Constant.MODULE,
 				GetNotificationRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, GetNotificationResult.class);
@@ -262,12 +295,14 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public GetSubscribeResult getSubscribe(GetSubscribeRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null ? "null" : request.getNotificationName()) + "/subscribe/" + (request.getSubscribeId() == null ? "null" : request.getSubscribeId()) + "";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null || request.getNotificationName().equals("") ? "null" : request.getNotificationName()) + "/subscribe/" + (request.getSubscribeId() == null || request.getSubscribeId().equals("") ? "null" : request.getSubscribeId()) + "";
 
 
 
@@ -277,6 +312,9 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 				ENDPOINT,
 				GetSubscribeRequest.Constant.MODULE,
 				GetSubscribeRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, GetSubscribeResult.class);
@@ -289,7 +327,9 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public UpdateNotificationResult updateNotification(UpdateNotificationRequest request) {
@@ -298,12 +338,15 @@ public class Gs2NotificationClient extends AbstractGs2Client<Gs2NotificationClie
 				.put("description", request.getDescription());
 
 		HttpPut put = createHttpPut(
-				Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null ? "null" : request.getNotificationName()) + "",
+				Gs2Constant.ENDPOINT_HOST + "/notification/" + (request.getNotificationName() == null || request.getNotificationName().equals("") ? "null" : request.getNotificationName()) + "",
 				credential,
 				ENDPOINT,
 				UpdateNotificationRequest.Constant.MODULE,
 				UpdateNotificationRequest.Constant.FUNCTION,
 				body.toString());
+        if(request.getRequestId() != null) {
+            put.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(put, UpdateNotificationResult.class);
