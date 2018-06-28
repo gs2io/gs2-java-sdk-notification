@@ -30,90 +30,44 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Subscribe implements Serializable {
 
-	/** type = email: メールアドレス
-type = http/https: URL
- */
-	private String endpoint;
-
-	/** 通知方法 */
-	private String type;
-
-	/** オーナーID */
-	private String ownerId;
+	/** 購読GRN */
+	private String subscribeId;
 
 	/** 通知GRN */
 	private String notificationId;
 
-	/** 購読GRN */
-	private String subscribeId;
+	/** オーナーID */
+	private String ownerId;
 
-	/** 最終更新日時(エポック秒) */
-	private Integer updateAt;
+	/** 通知方法 */
+	private String type;
+
+	/** type = email: メールアドレス */
+	private String endpoint;
 
 	/** 作成日時(エポック秒) */
 	private Integer createAt;
 
+	/** 最終更新日時(エポック秒) */
+	private Integer updateAt;
+
 
 	/**
-	 * type = email: メールアドレス
-type = http/https: URL
-を取得
+	 * 購読GRNを取得
 	 *
-	 * @return type = email: メールアドレス
-type = http/https: URL
-
+	 * @return 購読GRN
 	 */
-	public String getEndpoint() {
-		return endpoint;
+	public String getSubscribeId() {
+		return subscribeId;
 	}
 
 	/**
-	 * type = email: メールアドレス
-type = http/https: URL
-を設定
+	 * 購読GRNを設定
 	 *
-	 * @param endpoint type = email: メールアドレス
-type = http/https: URL
-
+	 * @param subscribeId 購読GRN
 	 */
-	public void setEndpoint(String endpoint) {
-		this.endpoint = endpoint;
-	}
-
-	/**
-	 * 通知方法を取得
-	 *
-	 * @return 通知方法
-	 */
-	public String getType() {
-		return type;
-	}
-
-	/**
-	 * 通知方法を設定
-	 *
-	 * @param type 通知方法
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	/**
-	 * オーナーIDを取得
-	 *
-	 * @return オーナーID
-	 */
-	public String getOwnerId() {
-		return ownerId;
-	}
-
-	/**
-	 * オーナーIDを設定
-	 *
-	 * @param ownerId オーナーID
-	 */
-	public void setOwnerId(String ownerId) {
-		this.ownerId = ownerId;
+	public void setSubscribeId(String subscribeId) {
+		this.subscribeId = subscribeId;
 	}
 
 	/**
@@ -135,39 +89,57 @@ type = http/https: URL
 	}
 
 	/**
-	 * 購読GRNを取得
+	 * オーナーIDを取得
 	 *
-	 * @return 購読GRN
+	 * @return オーナーID
 	 */
-	public String getSubscribeId() {
-		return subscribeId;
+	public String getOwnerId() {
+		return ownerId;
 	}
 
 	/**
-	 * 購読GRNを設定
+	 * オーナーIDを設定
 	 *
-	 * @param subscribeId 購読GRN
+	 * @param ownerId オーナーID
 	 */
-	public void setSubscribeId(String subscribeId) {
-		this.subscribeId = subscribeId;
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
 	}
 
 	/**
-	 * 最終更新日時(エポック秒)を取得
+	 * 通知方法を取得
 	 *
-	 * @return 最終更新日時(エポック秒)
+	 * @return 通知方法
 	 */
-	public Integer getUpdateAt() {
-		return updateAt;
+	public String getType() {
+		return type;
 	}
 
 	/**
-	 * 最終更新日時(エポック秒)を設定
+	 * 通知方法を設定
 	 *
-	 * @param updateAt 最終更新日時(エポック秒)
+	 * @param type 通知方法
 	 */
-	public void setUpdateAt(Integer updateAt) {
-		this.updateAt = updateAt;
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	/**
+	 * type = email: メールアドレスを取得
+	 *
+	 * @return type = email: メールアドレス
+	 */
+	public String getEndpoint() {
+		return endpoint;
+	}
+
+	/**
+	 * type = email: メールアドレスを設定
+	 *
+	 * @param endpoint type = email: メールアドレス
+	 */
+	public void setEndpoint(String endpoint) {
+		this.endpoint = endpoint;
 	}
 
 	/**
@@ -186,6 +158,24 @@ type = http/https: URL
 	 */
 	public void setCreateAt(Integer createAt) {
 		this.createAt = createAt;
+	}
+
+	/**
+	 * 最終更新日時(エポック秒)を取得
+	 *
+	 * @return 最終更新日時(エポック秒)
+	 */
+	public Integer getUpdateAt() {
+		return updateAt;
+	}
+
+	/**
+	 * 最終更新日時(エポック秒)を設定
+	 *
+	 * @param updateAt 最終更新日時(エポック秒)
+	 */
+	public void setUpdateAt(Integer updateAt) {
+		this.updateAt = updateAt;
 	}
 
 }

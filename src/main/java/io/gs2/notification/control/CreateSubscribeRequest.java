@@ -34,11 +34,11 @@ public class CreateSubscribeRequest extends Gs2BasicRequest<CreateSubscribeReque
 	/** 通知の名前を指定します。 */
 	private String notificationName;
 
-	/** 通知先 */
-	private String endpoint;
-
 	/** 通知に利用する方式 */
 	private String type;
+
+	/** 通知先 */
+	private String endpoint;
 
 
 	/**
@@ -71,35 +71,6 @@ public class CreateSubscribeRequest extends Gs2BasicRequest<CreateSubscribeReque
 	}
 
 	/**
-	 * 通知先を取得
-	 *
-	 * @return 通知先
-	 */
-	public String getEndpoint() {
-		return endpoint;
-	}
-
-	/**
-	 * 通知先を設定
-	 *
-	 * @param endpoint 通知先
-	 */
-	public void setEndpoint(String endpoint) {
-		this.endpoint = endpoint;
-	}
-
-	/**
-	 * 通知先を設定
-	 *
-	 * @param endpoint 通知先
-	 * @return this
-	 */
-	public CreateSubscribeRequest withEndpoint(String endpoint) {
-		setEndpoint(endpoint);
-		return this;
-	}
-
-	/**
 	 * 通知に利用する方式を取得
 	 *
 	 * @return 通知に利用する方式
@@ -125,6 +96,35 @@ public class CreateSubscribeRequest extends Gs2BasicRequest<CreateSubscribeReque
 	 */
 	public CreateSubscribeRequest withType(String type) {
 		setType(type);
+		return this;
+	}
+
+	/**
+	 * 通知先を取得
+	 *
+	 * @return 通知先
+	 */
+	public String getEndpoint() {
+		return endpoint;
+	}
+
+	/**
+	 * 通知先を設定
+	 *
+	 * @param endpoint 通知先
+	 */
+	public void setEndpoint(String endpoint) {
+		this.endpoint = endpoint;
+	}
+
+	/**
+	 * 通知先を設定
+	 *
+	 * @param endpoint 通知先
+	 * @return this
+	 */
+	public CreateSubscribeRequest withEndpoint(String endpoint) {
+		setEndpoint(endpoint);
 		return this;
 	}
 

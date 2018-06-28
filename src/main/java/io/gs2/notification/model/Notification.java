@@ -30,60 +30,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Notification implements Serializable {
 
-	/** 作成日時(エポック秒) */
-	private Integer createAt;
-
-	/** 通知名 */
-	private String name;
-
 	/** 通知GRN */
 	private String notificationId;
 
 	/** オーナーID */
 	private String ownerId;
 
-	/** 最終更新日時(エポック秒) */
-	private Integer updateAt;
+	/** 通知名 */
+	private String name;
 
 	/** 説明文 */
 	private String description;
 
+	/** 作成日時(エポック秒) */
+	private Integer createAt;
 
-	/**
-	 * 作成日時(エポック秒)を取得
-	 *
-	 * @return 作成日時(エポック秒)
-	 */
-	public Integer getCreateAt() {
-		return createAt;
-	}
+	/** 最終更新日時(エポック秒) */
+	private Integer updateAt;
 
-	/**
-	 * 作成日時(エポック秒)を設定
-	 *
-	 * @param createAt 作成日時(エポック秒)
-	 */
-	public void setCreateAt(Integer createAt) {
-		this.createAt = createAt;
-	}
-
-	/**
-	 * 通知名を取得
-	 *
-	 * @return 通知名
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * 通知名を設定
-	 *
-	 * @param name 通知名
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	/**
 	 * 通知GRNを取得
@@ -122,21 +86,21 @@ public class Notification implements Serializable {
 	}
 
 	/**
-	 * 最終更新日時(エポック秒)を取得
+	 * 通知名を取得
 	 *
-	 * @return 最終更新日時(エポック秒)
+	 * @return 通知名
 	 */
-	public Integer getUpdateAt() {
-		return updateAt;
+	public String getName() {
+		return name;
 	}
 
 	/**
-	 * 最終更新日時(エポック秒)を設定
+	 * 通知名を設定
 	 *
-	 * @param updateAt 最終更新日時(エポック秒)
+	 * @param name 通知名
 	 */
-	public void setUpdateAt(Integer updateAt) {
-		this.updateAt = updateAt;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -155,6 +119,42 @@ public class Notification implements Serializable {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * 作成日時(エポック秒)を取得
+	 *
+	 * @return 作成日時(エポック秒)
+	 */
+	public Integer getCreateAt() {
+		return createAt;
+	}
+
+	/**
+	 * 作成日時(エポック秒)を設定
+	 *
+	 * @param createAt 作成日時(エポック秒)
+	 */
+	public void setCreateAt(Integer createAt) {
+		this.createAt = createAt;
+	}
+
+	/**
+	 * 最終更新日時(エポック秒)を取得
+	 *
+	 * @return 最終更新日時(エポック秒)
+	 */
+	public Integer getUpdateAt() {
+		return updateAt;
+	}
+
+	/**
+	 * 最終更新日時(エポック秒)を設定
+	 *
+	 * @param updateAt 最終更新日時(エポック秒)
+	 */
+	public void setUpdateAt(Integer updateAt) {
+		this.updateAt = updateAt;
 	}
 
 }
